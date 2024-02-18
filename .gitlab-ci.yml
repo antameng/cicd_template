@@ -11,7 +11,7 @@ stages:
     - npm install -g pnpm
     - pnpm i
   script:
-    - pnpm build:docker
+    - pnpm run build
   # artifacts:
   #   expire_in: 1 week
   #   paths:
