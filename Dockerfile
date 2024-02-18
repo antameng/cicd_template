@@ -1,8 +1,11 @@
-FROM node:lts
-# 维修者
-MAINTAINER Razil "671608311@qq.com"
-WORKDIR /app
-COPY . ./
-# 暴露端口
-EXPOSE 9000
-RUN echo "🎉 架 🎉 设 🎉 成 🎉 功 🎉"
+FROM nginx:latest
+
+WORKDIR /usr/share/nginx/html/
+
+ADD ./docker/nginx.conf /etc/nginx/conf.d/default.conf
+
+ADD ./dist  /usr/share/nginx/html/
+
+EXPOSE 81
+
+CMD ["nginx", "-g", "daemon off;"]
