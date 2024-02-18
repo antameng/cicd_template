@@ -6,9 +6,9 @@ variables:
 services:
   - docker:dind
 
-cache:
-  paths:
-    - node_modules/
+#cache:
+#  paths:
+#    - node_modules/
 
 stages:
   - build
