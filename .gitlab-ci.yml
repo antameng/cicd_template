@@ -1,0 +1,30 @@
+image: node:latest
+
+stages:
+  - build
+  - deploy
+
+生成网站:
+  image: node:latest
+  stage: build
+  before_script:
+    - npm install -g pnpm
+    - pnpm i
+  script:
+    - pnpm build:docker
+  # artifacts:
+  #   expire_in: 1 week
+  #   paths:
+  #     - dist
+
+生成容器镜像:
+  image: docker
+  stage: deploy
+  script:
+    - docker ps
+    - docker build -t front-devops-demo-image .
+    - if [ $(docker ps -aq --filter name=front-devops-demo-container) ]; then docker rm -f front-devops-demo-container;fi
+    - docker run -d -p 9000:80 --name front-devops-demo-container front-devops-demo-image
+  needs:
+    - job: 生成网站
+      artifacts: true
