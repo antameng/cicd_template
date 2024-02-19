@@ -23,7 +23,9 @@ stages: # 分段
     paths:
       - dist
     expire_in: 1 week
-
+  needs:
+    - job: 安装依赖
+      artifacts: true
 docker:
   image: docker
   stage: deploy
