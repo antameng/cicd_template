@@ -5,18 +5,10 @@ cache: # 缓存
     - node_modules/
 
 stages: # 分段
-  - install
   - build
   - deploy
 
-安装依赖:
-  stage: install
-  script:
-    - npm install -g pnpm
-    - pnpm i
-
 打包:
-  image: node:latest
   stage: build
   before_script:
     - npm install -g pnpm
@@ -27,9 +19,7 @@ stages: # 分段
     paths:
       - dist
     expire_in: 1 week
-  needs:
-    - job: 安装依赖
-      artifacts: true
+
 docker:
   image: docker
   stage: deploy
