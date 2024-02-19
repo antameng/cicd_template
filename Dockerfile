@@ -1,3 +1,17 @@
+# node 构建
+FROM node:lts
+# 署名
+MAINTAINER Adoin '671608311@qq.com'
+WORKDIR /app
+COPY . ./
+
+# 设置阿里镜像、pnpm、依赖、编译
+RUN npm install pnpm -g && \
+    pnpm install
+    pnpm run build
+# node部分结束
+RUN echo "🎉 编 🎉 译 🎉 成 🎉 功 🎉"
+
 FROM nginx:latest
 
 WORKDIR /usr/share/nginx/html/
