@@ -7,7 +7,7 @@ const router = useRouter()
   <div>
     <div i-carbon-pedestrian inline-block text-4xl />
     <p>
-      Hi, {{ params.name }}
+      Hi, {{ params.name }},欢迎你
     </p>
     <p text-sm op50>
       <em>Dynamic route!</em>
