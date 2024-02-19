@@ -18,6 +18,9 @@ stages: # 分段
 打包:
   image: node:latest
   stage: build
+  before_script:
+    - npm install -g pnpm
+    - pnpm i
   script:
     - pnpm run build
   artifacts:
