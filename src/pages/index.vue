@@ -17,7 +17,7 @@ function go() {
     <div i-carbon-campsite inline-block text-4xl />
     <p>
       <a rel="noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">
-        Vitesse Lite 测试
+        Vitesse Lite 测试123
       </a>
     </p>
     <p>
