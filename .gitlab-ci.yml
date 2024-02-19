@@ -1,32 +1,32 @@
 image: node:latest
 
-#variables:
-#  DOCKER_HOST: tcp://docker:2375/
-
-#services:
-#  - docker:dind
-
-cache:
+cache: # 缓存
   paths:
     - node_modules/
 
-stages:
+stages: # 分段
+  - install
   - build
   - deploy
 
-生成网站:
-  image: node:latest
-  stage: build
-  before_script:
+安装依赖:
+  tags:
+    - vitesse-lite
+  stage: install
+  script:
     - npm install -g pnpm
     - pnpm i
+
+打包:
+  stage: build
   script:
     - pnpm run build
   artifacts:
     paths:
       - dist
     expire_in: 1 week
-生成容器镜像:
+
+docker:
   image: docker
   stage: deploy
   script:
@@ -36,5 +36,5 @@ stages:
     - if [ $(docker ps -aq --filter name=front-devops-demo-container) ]; then docker rm -f front-devops-demo-container;fi
     - docker run -d -p 9000:80 --name front-devops-demo-container front-devops-demo-image
   needs:
-    - job: 生成网站
+    - job: 打包
       artifacts: true
