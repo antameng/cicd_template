@@ -1,8 +1,16 @@
 FROM nginx:latest
 
-COPY  /app/dist /usr/share/nginx/html/dist
+WORKDIR /usr/share/nginx/html/
 
-COPY  /app/nginx.conf /etc/nginx/nginx.conf
+ADD ./docker/nginx.conf /etc/nginx/conf.d/default.conf
+
+ADD ./dist  /usr/share/nginx/html/
+
+#COPY ..
+
+#COPY  /app/dist /usr/share/nginx/html/dist
+
+#COPY  /app/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
 
