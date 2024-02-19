@@ -10,6 +10,7 @@ stages: # 分段
   - deploy
 
 安装依赖:
+  image: node:lts
   tags:
     - vitesse-lite
   stage: install
