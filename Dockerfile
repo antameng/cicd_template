@@ -1,8 +1,8 @@
 FROM nginx:latest
 
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+COPY  /app/dist /usr/share/nginx/html
 
-COPY --from=build-stage /app/nginx.conf /etc/nginx/conf.d/default.conf
+COPY  /app/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
