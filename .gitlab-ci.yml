@@ -22,7 +22,10 @@ stages:
     - pnpm i
   script:
     - pnpm run build
-
+  artifacts:
+    paths:
+      - dist
+    expire_in: 1 week
 生成容器镜像:
   image: docker
   stage: deploy
