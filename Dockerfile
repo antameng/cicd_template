@@ -7,7 +7,7 @@ COPY . ./
 
 # 设置阿里镜像、pnpm、依赖、编译
 RUN npm install pnpm -g && \
-    pnpm install
+    pnpm install && \
     pnpm run build
 # node部分结束
 RUN echo "🎉 编 🎉 译 🎉 成 🎉 功 🎉"
