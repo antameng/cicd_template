@@ -28,7 +28,7 @@ docker:
     - docker ps
     - docker build -t front-devops-demo-image .
     - if [ $(docker ps -aq --filter name=front-devops-demo-container) ]; then docker rm -f front-devops-demo-container;fi
-    - docker run -d -p 9000:80 --name front-devops-demo-container front-devops-demo-image
+    - docker run -d -p 88:80 --name front-devops-demo-container front-devops-demo-image
   needs:
     - job: 打包
       artifacts: true
