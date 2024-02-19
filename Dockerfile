@@ -2,9 +2,9 @@ FROM nginx:latest
 
 WORKDIR /usr/share/nginx/html/
 
-ADD ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./dist /usr/share/nginx/html
 
-ADD ./dist  /usr/share/nginx/html/
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
