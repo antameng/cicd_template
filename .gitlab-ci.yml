@@ -16,6 +16,7 @@ stages: # 分段
     - pnpm i
 
 打包:
+  image: node:latest
   stage: build
   script:
     - pnpm run build
