@@ -6,6 +6,6 @@ ADD ./docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 ADD ./dist  /usr/share/nginx/html/
 
-EXPOSE 80
+EXPOSE 81
 
 CMD ["nginx", "-g", "daemon off;"]
