@@ -1,11 +1,9 @@
 FROM nginx:latest
 
-WORKDIR /usr/share/nginx/html/
+COPY --from=build-stage /app/dist /usr/share/nginx/html
 
-ADD ./docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build-stage /app/nginx.conf /etc/nginx/conf.d/default.conf
 
-ADD ./dist  /usr/share/nginx/html/
-
-EXPOSE 81
+EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
